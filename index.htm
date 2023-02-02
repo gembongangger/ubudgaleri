@@ -1,86 +1,83 @@
 <html>
   <head>
     <style>
+      /* Styling form dengan CSS Google */
       form {
         font-family: Arial, sans-serif;
-        font-size: 16px;
-        margin: 50px auto;
-        width: 500px;
-        text-align: center;
-        padding: 30px;
-        background-color: #f2f2f2;
+        border: 2px solid #f1f1f1;
+        padding: 20px;
+        width: 450px;
+        margin: 20px auto;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         border-radius: 10px;
       }
+      /* Style untuk label */
       label {
         font-weight: bold;
-        margin-right: 10px;
-        display: inline-block;
-        width: 150px;
-        text-align: left;
+        margin-top: 10px;
+        display: block;
       }
+      /* Style untuk input */
       input[type="text"] {
-        width: 200px;
-        height: 30px;
-        padding: 5px;
-        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+        box-sizing: border-box;
         border-radius: 5px;
         border: 1px solid #ccc;
+        font-size: 16px;
       }
-      input[type="submit"] {
-        width: 120px;
-        height: 40px;
-        margin-top: 20px;
+      /* Style untuk tombol */
+      input[type="button"] {
         background-color: #4CAF50;
         color: white;
+        padding: 10px 20px;
+        margin-top: 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
-        font-weight: bold;
       }
-      #result {
-        font-family: Arial, sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 20px;
-        text-align: center;
-      }
-    </style>
+	 label {
+		color: blue;
+  }
+</style>
+<title>Hitung Harga Bingkai Ubud Galeri</title>
+<h2 align="center">Hitung Harga Bingkai Ubud Galeri</h2>
   </head>
   <body>
-    <h1 style="text-align: center;">Perhitungan Harga Bingkai Ubud Galeri</h1>
     <form>
-      <label>Panjang Bingkai:</label>
-      <input type="text" id="panjangBingkai">
-      <br><br>
-      <label>Lebar Bingkai:</label>
-      <input type="text" id="lebarBingkai">
-      <br><br>
-      <label>Panjang Wolen:</label>
-      <input type="text" id="panjangWolen">
-      <br><br>
-      <label>Harga Material Per cm:</label>
-      <input type="text" id="hargaMaterialPerCm">
-      <br><br>
-      <label>Konstanta Persen:</label>
-      <input type="text" id="konstantaPersen">
-      <br><br>
-      <input type="submit" value="Submit">
+      <label>Panjang Bingkai (cm):</label> <input type="text" id="panjangBingkai" value="0"><br><br>
+      <label>Lebar Bingkai (cm):</label> <input type="text" id="lebarBingkai" value="0"><br><br>
+      <label>Panjang Lowen (cm):</label> <input type="text" id="panjangLowen" value="0"><br><br>
+      <label>Harga Material Bingkai (cm) (Rp):</label> <input type="text" id="hargaMaterialBingkai" value="0"><br><br>
+      <label>Harga Material Lowen (cm) (Rp):</label> <input type="text" id="hargaMaterialLowen" value="0"><br><br>
+	  <label>Harga Material Ganjel (cm) (Rp):</label> <input type="text" id="hargaMaterialGanjel" value="0"><br><br>
+      <label>Konstanta Persen (%):</label> <input type="text" id="konstantaPersen" value="0"><br><br>
+      <input type="button" value="Hitung" onclick="calculate()">
     </form>
-    <div id="result"></div>
-    <script>
-      document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var panjangBingkai = parseFloat(document.querySelector('#panjangBingkai').value);
-        var lebarBingkai = parseFloat(document.querySelector('#lebarBingkai').value);
-        var panjangWolen = parseFloat(document.querySelector('#panjangWolen').value);
-        var hargaMaterialPerCm = parseFloat(document.querySelector('#hargaMaterialPerCm').value);
-        var konstantaPersen = parseFloat(document.querySelector('#konstantaPersen').value);
-        var modelTunggal = (((panjangBingkai + lebarBingkai) * 2 + panjangWolen) * hargaMaterialPerCm)*(1 + konstantaPersen/100) + (panjangBingkai * lebarBingkai * 10) + (panjangBingkai * lebarBingkai * 3);
-        document.querySelector('#result').innerHTML = 'Model Tunggal: ' + modelTunggal;
-      });
-    </script>
-  </body>
+
+<script>
+  function calculate() {
+    var panjangBingkai = parseFloat(document.getElementById("panjangBingkai").value);
+    var lebarBingkai = parseFloat(document.getElementById("lebarBingkai").value);
+    var panjangLowen = parseFloat(document.getElementById("panjangLowen").value);
+    var hargaMaterialBingkai = parseFloat(document.getElementById("hargaMaterialBingkai").value);
+    var hargaMaterialLowen = parseFloat(document.getElementById("hargaMaterialLowen").value);
+	var hargaMaterialGanjel = parseFloat(document.getElementById("hargaMaterialGanjel").value);
+    var konstantaPersen = parseFloat(document.getElementById("konstantaPersen").value);
+
+    var modelTunggal = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai)*(1 + konstantaPersen/100) + (panjangBingkai * lebarBingkai * 10) + (panjangBingkai * lebarBingkai * 3);
+    var modelDouble = ((((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialLowen) +
+			(((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) + 
+			(panjangBingkai * lebarBingkai * 10) + 
+			(panjangBingkai * lebarBingkai * 3))*(1 + konstantaPersen/100);
+	var modelGanjel = (	(((panjangBingkai + lebarBingkai) * 2) * hargaMaterialGanjel)*(1 + konstantaPersen/100) +
+					  (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) +
+					  (panjangBingkai * lebarBingkai * 10) + 
+					  (panjangBingkai * lebarBingkai * 3)	)*(1 + konstantaPersen/100);
+
+    alert("Hasil Model Tunggal: Rp " + modelTunggal + "\nHasil Model Double: Rp " + modelDouble + "\nHasil Model Ganjel: Rp " + modelGanjel);
+  }
+</script>
 </html>
-
-
