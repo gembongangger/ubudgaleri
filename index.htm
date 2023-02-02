@@ -2,7 +2,17 @@
   <head>
     <style>
       /* Styling form dengan CSS Google */
-      form {
+      h2 {
+        color: blue;
+		font-family: Arial, sans-serif;
+        border: 2px solid #f1f1f1;
+        padding: 20px;
+        width: 450px;
+        margin: 20px auto;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 10px;
+      }	  
+	  form {
         font-family: Arial, sans-serif;
         border: 2px solid #f1f1f1;
         padding: 20px;
@@ -29,7 +39,7 @@
       }
       /* Style untuk tombol */
       input[type="button"] {
-        background-color: #4CAF50;
+        background-color: blue;
         color: white;
         padding: 10px 20px;
         margin-top: 20px;
@@ -38,7 +48,7 @@
         cursor: pointer;
         font-size: 16px;
       }
-	 label {
+	 ket {
 		color: blue;
   }
 </style>
@@ -47,13 +57,15 @@
   </head>
   <body>
     <form>
-      <label>Panjang Bingkai (cm):</label> <input type="text" id="panjangBingkai" value="0"><br><br>
-      <label>Lebar Bingkai (cm):</label> <input type="text" id="lebarBingkai" value="0"><br><br>
-      <label>Panjang Lowen (cm):</label> <input type="text" id="panjangLowen" value="0"><br><br>
+      <label>Panjang Bingkai (cm):</label> <input type="number" id="panjangBingkai" value="0"><br><br>
+      <label>Lebar Bingkai (cm):</label> <input type"number"er" id="lebarBingkai" value="0"><br><br>
+      <label>Panjang Lowen (cm):</label> <input type="number" id="panjangLowen" value="0"><br><br>
       <label>Harga Material Bingkai (cm) (Rp):</label> <input type="text" id="hargaMaterialBingkai" value="0"><br><br>
-      <label>Harga Material Lowen (cm) (Rp):</label> <input type="text" id="hargaMaterialLowen" value="0"><br><br>
-	  <label>Harga Material Ganjel (cm) (Rp):</label> <input type="text" id="hargaMaterialGanjel" value="0"><br><br>
-      <label>Konstanta Persen (%):</label> <input type="text" id="konstantaPersen" value="0"><br><br>
+      <ket>Khusus Untuk Model Double:</ket><br>
+	  <label>Harga Material Lowen (cm) (Rp):</label> <input type="number" id="hargaMaterialLowen" value="0"><br><br>
+	  <ket>Khusus Untuk Model Double:</ket><br>
+	  <label>Harga Material Ganjel (cm) (Rp):</label> <input type="number" id="hargaMaterialGanjel" value="0"><br><br>
+      <label>Konstanta Persen (%):</label> <input type="number" id="konstantaPersen" value="0"><br><br>
       <input type="button" value="Hitung" onclick="calculate()">
     </form>
 
