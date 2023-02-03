@@ -60,6 +60,12 @@
       <label>Panjang Bingkai (cm):</label> <input type="number" id="panjangBingkai" value="0"><br><br>
       <label>Lebar Bingkai (cm):</label> <input type="number" id="lebarBingkai" value="0"><br><br>
       <label>Panjang Lowen (cm):</label> <input type="number" id="panjangLowen" value="0"><br><br>
+      <label>Jenis Kaca:</label>
+      <select id="jenisKaca">
+        <option value="1">2 mm</option>
+        <option value="2">3 mm</option>
+        <option value="3">Doff</option>
+      </select><br><br>
       <label>Harga Material Bingkai (cm) (Rp):</label> <input type="number" id="hargaMaterialBingkai" value="0"><br><br>
       <ket>Khusus Untuk Model Double:</ket><br>
 	  <label>Harga Material Lowen (cm) (Rp):</label> <input type="number" id="hargaMaterialLowen" value="0"><br><br>
@@ -78,18 +84,54 @@
     var hargaMaterialLowen = parseFloat(document.getElementById("hargaMaterialLowen").value);
 	var hargaMaterialGanjel = parseFloat(document.getElementById("hargaMaterialGanjel").value);
     var konstantaPersen = parseFloat(document.getElementById("konstantaPersen").value);
+    var jenisKaca = document.getElementById("jenisKaca").value;
 
-    var modelTunggal = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai)*(1 + konstantaPersen/100) + (panjangBingkai * lebarBingkai * 10) + (panjangBingkai * lebarBingkai * 3);
-    var modelDouble = ((((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialLowen) +
-			(((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) + 
-			(panjangBingkai * lebarBingkai * 10) + 
-			(panjangBingkai * lebarBingkai * 3))*(1 + konstantaPersen/100);
-	var modelGanjel = (	(((panjangBingkai + lebarBingkai) * 2) * hargaMaterialGanjel)*(1 + konstantaPersen/100) +
-					  (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) +
-					  (panjangBingkai * lebarBingkai * 10) + 
-					  (panjangBingkai * lebarBingkai * 3)	)*(1 + konstantaPersen/100);
+    
+    //var biayaKaca = (panjangBingkai * lebarBingkai * 10);
+    if (jenisKaca == 1) {
+		  biayaKaca = (panjangBingkai * lebarBingkai * 10);
+		} else if (jenisKaca == 2) {
+		  biayaKaca = (panjangBingkai * lebarBingkai * 15);
+		} else {
+		  biayaKaca = (panjangBingkai * lebarBingkai * 30);
+		}
+    
+    
+    var biayaGanjel = (((panjangBingkai + lebarBingkai) * 2) * hargaMaterialGanjel)*(1 + konstantaPersen/100);
+    var biayaPigura = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) * (1 + konstantaPersen/100);
+	var biayaTriplek = (panjangBingkai * lebarBingkai * 3);
+	//model double var
+	var biayaWall = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai);
+    var biayaPiguraDouble = (((panjangBingkai + lebarBingkai) * 2 + (panjangLowen + 30)) * hargaMaterialBingkai);
+    
+    
+    var modelTunggal = biayaPigura + biayaKaca + biayaTriplek;
+   
+    var modelDouble = ( biayaWall + biayaPiguraDouble)*(1 + konstantaPersen/100) + biayaKaca + biayaTriplek;
+	
+	var modelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
+					  
 
-    alert("Hasil Model Tunggal: Rp " + modelTunggal + "\nHasil Model Double: Rp " + modelDouble + "\nHasil Model Ganjel: Rp " + modelGanjel);
+    alert(
+			"Hasil Model Tunggal: Rp " 
+		   + modelTunggal 
+		   + "\nHasil Model Double: Rp " 
+		   + modelDouble 
+		   + "\nHasil Model Ganjel: Rp " 
+		   + modelGanjel 
+		   + "\n Jenis Kaca: " 
+		  + jenisKaca
+		  // + "\n Biaya Wall: " 
+		   // + biayaWall
+		  // + "\n Biaya Ganjel: " 
+		  //+ biayaGanjel
+		  // + "\n Biaya Pigura: "
+		  // +  biayaPiguraGanjel
+		  // + "\n Biaya kaca: "
+		  // +  biayaKaca
+		  // + "\n Biaya triplek: "
+		  // +  biayaTriplek
+		   );
   }
 </script>
 </html>
