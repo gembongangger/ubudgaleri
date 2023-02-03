@@ -111,17 +111,25 @@
     
     var biayaGanjel = (((panjangBingkai + lebarBingkai) * 2) * hargaMaterialGanjel)*(1 + konstantaPersen/100);
     var biayaPigura = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai) * (1 + konstantaPersen/100);
-	var biayaTriplek = (panjangBingkai * lebarBingkai * 3);
-	//model double var
-	var biayaWall = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai);
+  	var biayaTriplek = (panjangBingkai * lebarBingkai * 3);
+	  
+    //model double var
+	  var biayaWall = (((panjangBingkai + lebarBingkai) * 2 + panjangLowen) * hargaMaterialBingkai);
     var biayaPiguraDouble = (((panjangBingkai + lebarBingkai) * 2 + (panjangLowen + 30)) * hargaMaterialBingkai);
     
-    
+    //model Tunggal
     var modelTunggal = biayaPigura + biayaKaca + biayaTriplek;
    
+    //model Double
     var modelDouble = ( biayaWall + biayaPiguraDouble)*(1 + konstantaPersen/100) + biayaKaca + biayaTriplek;
+
+    //model engkel + ganjel
+    var modelEngkelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
 	
-	var modelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
+  	var modelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
+
+  //model Double + ganjel
+  var modelDoubleGanjel = ( (biayaWall + biayaPiguraDouble) * (1 + konstantaPersen/100))  + biayaKaca + biayaTriplek + biayaGanjel;
 					  
 
     alert(
@@ -129,8 +137,12 @@
 		   + modelTunggal 
 		   + "\nHasil Model Double: Rp " 
 		   + modelDouble 
-		   + "\nHasil Model Ganjel: Rp " 
-		   + modelGanjel 
+		  // + "\nHasil Model Ganjel: Rp " 
+		  // + modelGanjel 
+       + "\nHasil Model Engkel + Ganjel: Rp " 
+		   + modelEngkelGanjel 
+       + "\nHasil Model Double + Ganjel: Rp " 
+		   + modelDoubleGanjel 
 		   + "\n Jenis Kaca: " 
 		  + jenisKaca
 		  // + "\n Biaya Wall: " 
