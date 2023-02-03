@@ -67,9 +67,9 @@
         <option value="3">Doff</option>
       </select><br><br>
       <label>Harga Material Bingkai (cm) (Rp):</label> <input type="number" id="hargaMaterialBingkai" value="0"><br><br>
-      <ket>Khusus Untuk Model Double:</ket><br>
-	  <label>Harga Material Lowen (cm) (Rp):</label> <input type="number" id="hargaMaterialLowen" value="0"><br><br>
-	  <ket>Khusus Untuk Model Double:</ket><br>
+      <!-- <ket>Khusus Untuk Model Double:</ket><br>
+	  <label>Harga Material Lowen (cm) (Rp):</label> <input type="number" id="hargaMaterialLowen" value="0"><br><br> -->
+	  <ket>Khusus Untuk Model Ganjel:</ket><br>
 	  <label>Harga Material Ganjel (cm) (Rp):</label> <input type="number" id="hargaMaterialGanjel" value="0"><br><br>
       <label>Konstanta Persen (%):</label> <input type="number" id="konstantaPersen" value="0"><br><br>
       <input type="button" value="Hitung" onclick="calculate()">
@@ -81,7 +81,7 @@
     var lebarBingkai = parseFloat(document.getElementById("lebarBingkai").value);
     var panjangLowen = parseFloat(document.getElementById("panjangLowen").value);
     var hargaMaterialBingkai = parseFloat(document.getElementById("hargaMaterialBingkai").value);
-    var hargaMaterialLowen = parseFloat(document.getElementById("hargaMaterialLowen").value);
+    //var hargaMaterialLowen = parseFloat(document.getElementById("hargaMaterialLowen").value);
 	var hargaMaterialGanjel = parseFloat(document.getElementById("hargaMaterialGanjel").value);
     var konstantaPersen = parseFloat(document.getElementById("konstantaPersen").value);
     var jenisKaca = document.getElementById("jenisKaca").value;
@@ -135,3 +135,4 @@
   }
 </script>
 </html>
+		
