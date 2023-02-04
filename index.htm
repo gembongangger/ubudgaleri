@@ -83,6 +83,7 @@
         <option value="1">2 mm</option>
         <option value="2">3 mm</option>
         <option value="3">Doff</option>
+		<option value="4">Tanpa Kaca</option>
       </select><br><br>
       <label>Harga Material Bingkai Dalam (cm) (Rp):</label> <input type="number" id="hargaBingkaiDalam" value="0"><br><br>
 	  <label>Harga Material Bingkai Luar (cm) (Rp):</label> <input type="number" id="hargaBingkaiLuar" value="0"><br><br>
@@ -112,8 +113,10 @@
 		  biayaKaca = (panjangBingkai * lebarBingkai * 10);
 		} else if (jenisKaca == 2) {
 		  biayaKaca = (panjangBingkai * lebarBingkai * 15);
-		} else {
+		} else if (jenisKaca == 3) {
 		  biayaKaca = (panjangBingkai * lebarBingkai * 30);
+		} else {
+		  biayaKaca = (panjangBingkai * lebarBingkai * 0);
 		}
     
     
