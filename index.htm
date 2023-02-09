@@ -123,54 +123,56 @@
     var biayaGanjel = (((panjangBingkai + lebarBingkai) * 2) * hargaMaterialGanjel)*(1 + konstantaPersen/100);
     var biayaPigura = (((panjangBingkai + lebarBingkai) * 2 + hargaLowenDalam) * hargaBingkaiDalam) * (1 + konstantaPersen/100);
   	var biayaTriplek = (panjangBingkai * lebarBingkai * 3);
-	  
+	  var biayaPiguraTunggal = (((panjangBingkai + lebarBingkai) * 2 + hargaLowenLuar) * hargaBingkaiLuar) * (1 + konstantaPersen/100);
+    var biayaPiguraEngkelGanjel = (((panjangBingkai + lebarBingkai) * 2 + hargaLowenLuar) * hargaBingkaiLuar) * (1 + konstantaPersen/100);
     //model double var
-	var biayaWall = (((panjangBingkai + lebarBingkai) * 2 + hargaLowenDalam) * hargaBingkaiDalam);
+	  var biayaWall = (((panjangBingkai + lebarBingkai) * 2 + hargaLowenDalam) * hargaBingkaiDalam);
     var biayaPiguraDouble = (((panjangBingkai + lebarBingkai) * 2 + (2*hargaLowenDalam)) * hargaBingkaiDalam);
     
     //model Tunggal
-    var modelTunggal = biayaPigura + biayaKaca + biayaTriplek;
+    var modelTunggal = biayaPiguraTunggal + biayaKaca + biayaTriplek;
    
     //model Double
     var modelDouble = ( biayaWall + biayaPiguraDouble)*(1 + konstantaPersen/100) + biayaKaca + biayaTriplek;
 
     //model engkel + ganjel
-    var modelEngkelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
+    var modelEngkelGanjel = biayaGanjel + biayaPiguraEngkelGanjel +biayaKaca	+ biayaTriplek;
 	
   	var modelGanjel = biayaGanjel + biayaPigura +biayaKaca	+ biayaTriplek;
 
     //model Double + ganjel
-	var modelDoubleGanjel = ( (biayaWall + biayaPiguraDouble) * (1 + konstantaPersen/100))  + biayaKaca + biayaTriplek + biayaGanjel;
+    var biayaWallDoubleGanjel = (((panjangBingkai + lebarBingkai) * 2 + (hargaLowenDalam)) * hargaBingkaiDalam);
+    var biayaPiguraDoubleGanjel  = (((panjangBingkai + lebarBingkai) * 2 + (hargaLowenDalam + hargaLowenLuar)) * hargaBingkaiLuar);
+	  var modelDoubleGanjel = ((biayaWallDoubleGanjel + biayaPiguraDoubleGanjel) * (1 + konstantaPersen/100))  + biayaKaca + biayaTriplek + biayaGanjel;
 					  
 	//model Double Beda Lowen
 	var biayaPiguraDoubleBedaLowen = (((panjangBingkai + lebarBingkai) * 2 + (hargaLowenDalam + hargaLowenLuar)) * hargaBingkaiLuar);
 	var modelDoubleBedaLowen = ( biayaWall + biayaPiguraDoubleBedaLowen )*(1 + konstantaPersen/100) + biayaKaca + biayaTriplek;
 	
-    alert(
-			"Hasil Model Tunggal: Rp " 
+    alert( 
+      "Hasil Model Tunggal: Rp " 
 		   + modelTunggal 
 		   + "\nHasil Model Double: Rp " 
 		   + modelDouble
 		   + "\nHasil Model Double Beda Lowen: Rp " 
 		   + modelDoubleBedaLowen		   
-		  // + "\nHasil Model Ganjel: Rp " 
-		  // + modelGanjel 
        + "\nHasil Model Engkel + Ganjel: Rp " 
-		   + modelEngkelGanjel 
-       + "\nHasil Model Double + Ganjel: Rp " 
+		   + modelEngkelGanjel
+       + "\n Hasil Model Double + Ganjel: Rp " 
 		   + modelDoubleGanjel 
-		   + "\n Jenis Kaca: " 
+		   // + "\n Biaya Wall Double ganjel: " 
+		   
+       // + biayaWallDoubleGanjel
+       // + "\n Biaya pigura Double ganjel: " 
+		   // + biayaPiguraDoubleGanjel
+       // + "\n Biaya ganjel: " 
+		   // + biayaGanjel
+
+
+      + "\n Jenis Kaca: " 
 		  + jenisKaca
-		  // + "\n Biaya Wall: " 
-		   // + biayaWall
-		  // + "\n Biaya Ganjel: " 
-		  //+ biayaGanjel
-		  // + "\n Biaya Pigura: "
-		  // +  biayaPiguraGanjel
-		  // + "\n Biaya kaca: "
-		  // +  biayaKaca
-		  // + "\n Biaya triplek: "
-		  // +  biayaTriplek
+
+      
 		   );
   }
 </script>
