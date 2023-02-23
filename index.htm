@@ -92,6 +92,15 @@
 	  <ket>Khusus Untuk Model Ganjel:</ket><br>
 	  <label>Harga Material Ganjel (cm) (Rp):</label> <input type="number" id="hargaMaterialGanjel" value="0"><br><br>
       <label>Konstanta Persen (%):</label> <input type="number" id="konstantaPersen" value="0"><br><br>
+      <label>Model Pigura:</label>
+      <select id="modelPigura">
+        <option value="1">Model Engkel</option>
+        <option value="2">Model Double</option>
+        <option value="3">Model Double Beda Lowen</option>
+        <option value="4">Model Model Engkel + Ganjel</option>
+        <option value="5">Model Model Double + Ganjel + Lowen Sama</option>
+        <option value="6">Model Double + Ganjel + Beda Lowen</option>
+      </select><br><br>
       <input type="button" value="Hitung" onclick="calculate()">
     </form>
 
@@ -106,7 +115,7 @@
 	var hargaMaterialGanjel = parseFloat(document.getElementById("hargaMaterialGanjel").value);
     var konstantaPersen = parseFloat(document.getElementById("konstantaPersen").value);
     var jenisKaca = document.getElementById("jenisKaca").value;
-
+    var modelPigura = document.getElementById("modelPigura").value;
     
     //var biayaKaca = (panjangBingkai * lebarBingkai * 10);
     if (jenisKaca == 1) {
@@ -156,33 +165,21 @@
     var biayaPiguraDoubleBedaLowen = (((panjangBingkai + lebarBingkai) * 2 + (hargaLowenDalam + hargaLowenLuar)) * hargaBingkaiLuar);
     var modelDoubleBedaLowen = ( biayaWall + biayaPiguraDoubleBedaLowen )*(1 + konstantaPersen/100) + biayaKaca + biayaTriplek;
 	
-    alert( 
-      "Hasil Model Tunggal: Rp " 
-		   + modelTunggal 
-		   + "\nHasil Model Double: Rp " 
-		   + modelDouble
-		   + "\nHasil Model Double Beda Lowen: Rp " 
-		   + modelDoubleBedaLowen		   
-       + "\nHasil Model Engkel + Ganjel: Rp " 
-		   + modelEngkelGanjel
-       + "\n Hasil Model Double + Ganjel + Lowen Sama: Rp " 
-		   + modelDoubleGanjel
-       + "\n Hasil Model Double + Ganjel + Beda Lowen: Rp " 
-		   + modelDoubleGanjelBedaLowen
-		   // + "\n Biaya Wall Double ganjel: " 
-		   
-       // + biayaWallDoubleGanjel
-       // + "\n Biaya pigura Double ganjel: " 
-		   // + biayaPiguraDoubleGanjel
-       // + "\n Biaya ganjel: " 
-		   // + biayaGanjel
-
-
-      + "\n Jenis Kaca: " 
-		  + jenisKaca
-
-      
-		   );
-  }
+  //var biayaKaca = (panjangBingkai * lebarBingkai * 10);
+   if (modelPigura == 1) {
+    alert("Hasil Model Engkel: Rp "+ modelTunggal);
+		} else if (modelPigura == 2) {
+		  alert("\nHasil Model Double: Rp "+ modelDouble);
+		} else if (modelPigura == 3) {
+		  alert("\nHasil Model Double Beda Lowen: Rp "+ modelDoubleBedaLowen);
+    } else if (modelPigura == 4) {
+		  alert("\nHasil Model Engkel + Ganjel: Rp "+ modelEngkelGanjel);
+    } else if (modelPigura == 5) {
+		  alert("\nHasil Model Double + Ganjel + Lowen Sama: Rp "+ modelDoubleGanjel);
+		} else {
+		  alert("\nHasil Model Double + Ganjel + Beda Lowen: Rp "+ modelDoubleGanjelBedaLowen);
+		}
+  
+}
 </script>
 </html>
